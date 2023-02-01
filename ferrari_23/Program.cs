@@ -20,14 +20,24 @@ namespace ferrari_23
                 switch (Console.ReadLine())
                 {
                     case "1":                                     //aggiunta
-                        Aggiunta(ref lunghezza, array);
-                        break;                                  
+                        Console.WriteLine("Inserire animale: ");
+                        string aggiunto = Console.ReadLine();
+                        if (Aggiunta(ref lunghezza, array, aggiunto))
+                        {
+                            Console.WriteLine("Il numero è stato inserito");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Il numero non è stato inserito, array pieno");
+                        }
+                        break;
                     case "2":                                     //cancella
+                        Cancella();
                         break;
                     case "3":                                     //bubblesort x ordine alfabetico
                         break;
                     case "4":                                     //ricerca sequenziale
-                        break;                                   
+                        break;
                     case "5":                                     //visualizza animali ripetuti
                         break;
                     case "6":                                     //modifica nome
@@ -49,13 +59,21 @@ namespace ferrari_23
                 Console.ReadKey();
             } while (continua == false);
         }
-        static void Aggiunta(ref int lunghezza, string[] arr)
+        static bool Aggiunta(ref int lunghezza, string[] arr, string agg)
         {
-            Console.WriteLine("Inserire animale: ");
-            arr[lunghezza] = Console.ReadLine();
-            lunghezza++;
+            bool inserito = false;
+            if (lunghezza < 100)
+            {
+                arr[lunghezza] = agg;
+                lunghezza++;
+                inserito = true;
+            }
+            return inserito;
         }                       //aggiunta
-        //cancella
+        static void Cancella()
+        {
+
+        }                                                      //cancella
         //bubblesort
         //ricerca
         //visualizza ripetuti
