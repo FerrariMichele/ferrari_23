@@ -64,7 +64,7 @@ namespace ferrari_23
                         }
                         break;
                     case "5":                                     //visualizza nomi ripetuti
-                        VisualizzaRipetuti(lunghezza, array);                                                   //<---<---<---<---<---<---<---<---
+                        VisualizzaRipetuti(lunghezza, array);
                         break;
                     case "6":                                     //modifica nome
                         Console.WriteLine("Inserire posizione del nome da modificare: ");
@@ -164,10 +164,7 @@ namespace ferrari_23
         }            //ricerca
         static void VisualizzaRipetuti(int lun, string[] arr) 
         {
-            for (int i = 0; i < lun; i++)
-            {
-                
-            }
+
         }                       //visualizza ripetuti
         static void ModificaNome(string[] arr, string nuovo, int posizione)
         {
@@ -179,6 +176,7 @@ namespace ferrari_23
             {
                 Console.Write($"{arr[i]} ");
             }
+            Console.WriteLine();
         }                                //visualizza array
         static void LungoCorto(string[] arr, int lun) 
         {
