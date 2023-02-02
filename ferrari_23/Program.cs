@@ -46,6 +46,8 @@ namespace ferrari_23
                         }
                         break;
                     case "3":                                     //bubblesort x ordine alfabetico
+                        BubbleSort(lunghezza, array);
+                        Console.WriteLine("Array ordinato in ordine alfabetico");
                         break;
                     case "4":                                     //ricerca sequenziale
                         break;
@@ -87,7 +89,24 @@ namespace ferrari_23
                 }
             }
         }            //cancella
-                                                                                        //bubblesort
+        static void BubbleSort(int lun, string[] arr) 
+        {
+            int x, y;
+            string temp;
+            for (x = 0; x < lun - 1; x++) 
+            {
+                for (y = 0; y < lun - 1; y++)
+                {
+                    int comp = string.Compare(arr[y], arr[y + 1]);
+                    if (comp == 1)
+                    {
+                        temp = arr[y];
+                        arr[y] = arr[y + 1];
+                        arr[y + 1] = temp;
+                    }
+                }
+            }
+        }                               //bubblesort
                                                                                         //ricerca
                                                                                         //visualizza ripetuti
                                                                                         //modifica nome
