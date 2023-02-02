@@ -50,6 +50,17 @@ namespace ferrari_23
                         Console.WriteLine("Array ordinato in ordine alfabetico");
                         break;
                     case "4":                                     //ricerca sequenziale
+                        Console.WriteLine("Inserire nome da ricercare: ");
+                        string ricerca = Console.ReadLine();
+                        int posizione = RicercaSequenziale(lunghezza, ricerca, array);
+                        if (posizione < 0)
+                        {
+                            Console.WriteLine("Il nome inserito non è presente nell'array");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"L'elemento {ricerca} si trova in posizione {posizione}");
+                        }
                         break;
                     case "5":                                     //visualizza animali ripetuti
                         break;
@@ -97,7 +108,7 @@ namespace ferrari_23
             {
                 for (y = 0; y < lun - 1; y++)
                 {
-                    int comp = string.Compare(arr[y], arr[y + 1]);
+                    int comp = string.Compare(arr[y], arr[y + 1]);      
                     if (comp == 1)
                     {
                         temp = arr[y];
@@ -107,16 +118,32 @@ namespace ferrari_23
                 }
             }
         }                               //bubblesort
-                                                                                        //ricerca
+        static int RicercaSequenziale(int lun, string ric, string[] arr) 
+        {
+            int pos = 0;
+            for (int i = 0; i < lun; i++)
+            {
+                if (arr[i] == ric)
+                {
+                    pos = i;
+                    break;
+                }
+                else
+                {
+                    pos = -1;
+                }
+            }
+            return pos;
+        }            //ricerca
                                                                                         //visualizza ripetuti
                                                                                         //modifica nome
-        static void Visualizza(string[] arr, int lun)                                   //visuaizza array
+        static void Visualizza(string[] arr, int lun)
         {
             for (int i = 0; i < lun; i++)
             {
                 Console.Write($"{arr[i]} ");
             }
-        }
+        }                                //visualizza array
                                                                                         //ricerca nome più lungo/corto
                                                                                         //cancella nomi uguali
     }                   
