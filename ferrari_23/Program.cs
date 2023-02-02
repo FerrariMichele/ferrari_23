@@ -63,8 +63,21 @@ namespace ferrari_23
                         }
                         break;
                     case "5":                                     //visualizza animali ripetuti
+                        VisualizzaRipetuti(lunghezza, array);
                         break;
                     case "6":                                     //modifica nome
+                        Console.WriteLine("Inserire posizione del nome da modificare: ");
+                        int posmodifica = int.Parse(Console.ReadLine());
+                        if (posmodifica < 0 || posmodifica > lunghezza) 
+                        {
+                            Console.WriteLine("Posizione non valida");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Nome attuale:\n{array[posmodifica]}\nInserire nuovo nome:");
+                            string modifica = Console.ReadLine();
+                            ModificaNome(array, modifica, posmodifica);
+                        }
                         break;
                     case "7":                                     //visualizza array/animali
                         Visualizza(array, lunghezza);
@@ -135,8 +148,17 @@ namespace ferrari_23
             }
             return pos;
         }            //ricerca
-                                                                                        //visualizza ripetuti
-                                                                                        //modifica nome
+        static void VisualizzaRipetuti(int lun, string[] arr) 
+        {
+            for (int i = 0; i < lun; i++)
+            {
+                
+            }
+        }                       //visualizza ripetuti
+        static void ModificaNome(string[] arr, string nuovo, int posizione)
+        {
+            arr[posizione] = nuovo;
+        }          //modifica nome
         static void Visualizza(string[] arr, int lun)
         {
             for (int i = 0; i < lun; i++)
