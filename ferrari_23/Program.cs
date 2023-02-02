@@ -17,7 +17,7 @@ namespace ferrari_23
             do
             {
                 Console.Clear();
-                Console.WriteLine("Selezionare un'opzione:\n1 - Aggiunta di un nome\n2 - Cancellazione di un nome singolo\n3 - Ordinamento dei nomi\n4 - Ricerca di un nome\n5 - Visualizzazione animali ripetuti\n6 - Modifica di un nome\n7 - Visualizzazione di tutti i nomi\n8 - Ricerca del nome più lungo e più corto\n9 - Cancellazione di tutte le occorrenze di un nome\n0 - Uscita dal programma");
+                Console.WriteLine("Selezionare un'opzione:\n1 - Aggiunta di un nome\n2 - Cancellazione di un nome singolo\n3 - Ordinamento dei nomi\n4 - Ricerca di un nome\n5 - Visualizzazione nomi ripetuti\n6 - Modifica di un nome\n7 - Visualizzazione di tutti i nomi\n8 - Ricerca del nome più lungo e più corto\n9 - Cancellazione di tutte le occorrenze di un nome\n0 - Uscita dal programma");
                 switch (Console.ReadLine())
                 {
                     case "1":                                     //aggiunta
@@ -63,7 +63,7 @@ namespace ferrari_23
                             Console.WriteLine($"L'elemento {ricerca} si trova in posizione {posizione}");
                         }
                         break;
-                    case "5":                                     //visualizza animali ripetuti
+                    case "5":                                     //visualizza nomi ripetuti
                         VisualizzaRipetuti(lunghezza, array);                                                   //<---<---<---<---<---<---<---<---
                         break;
                     case "6":                                     //modifica nome
@@ -80,10 +80,11 @@ namespace ferrari_23
                             ModificaNome(array, modifica, posmodifica);
                         }
                         break;
-                    case "7":                                     //visualizza array/animali
+                    case "7":                                     //visualizza array/nomi
                         Visualizza(array, lunghezza);
                         break;
                     case "8":                                     //ricerca nome più lungo e più corto, visualizzazione
+                        LungoCorto(array, lunghezza);
                         break;
                     case "9":                                     //cancella tutti i nomi uguali
                         if (lunghezza > 0)
@@ -102,6 +103,7 @@ namespace ferrari_23
                         continua = true;
                         break;
                 };
+                Console.WriteLine("Premere un tasto per continuare: ");
                 Console.ReadKey();
             } while (continua == false);
         }
@@ -178,7 +180,24 @@ namespace ferrari_23
                 Console.Write($"{arr[i]} ");
             }
         }                                //visualizza array
-                                                                                        //ricerca nome più lungo/corto
+        static void LungoCorto(string[] arr, int lun) 
+        {
+            string lungo = arr[0], corto = arr[0];
+            for (int i = 1; i < lun; i++)
+            {
+                
+                if (arr[i].Length > lungo.Length)
+                {
+                    lungo = arr[i];
+                }
+                if (arr[i].Length < corto.Length)
+                {
+                    corto = arr[i];
+                }
+            }
+            Console.WriteLine($"il nome più lungo è: {lungo}");
+            Console.WriteLine($"il nome più corto è: {corto}");
+        }                               //ricerca nome più lungo/corto
         static void CancellaUguali(ref int lunghezza, string[] arr, string can)
         {
             for (int i = 0; i < lunghezza; i++)
