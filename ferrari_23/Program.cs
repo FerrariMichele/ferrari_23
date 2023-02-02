@@ -20,15 +20,16 @@ namespace ferrari_23
                 switch (Console.ReadLine())
                 {
                     case "1":                                     //aggiunta
-                        Console.WriteLine("Inserire animale: ");
-                        string aggiunto = Console.ReadLine();
-                        if (Aggiunta(ref lunghezza, array, aggiunto))
+                        if (lunghezza < 2)
                         {
+                            Console.WriteLine("Inserire animale: ");
+                            string aggiunto = Console.ReadLine();
+                            Aggiunta(ref lunghezza, array, aggiunto);
                             Console.WriteLine("Il numero è stato inserito");
                         }
                         else
                         {
-                            Console.WriteLine("Il numero non è stato inserito, array pieno");
+                            Console.WriteLine("Impossibile inserire numero, array pieno");
                         }
                         break;
                     case "2":                                     //cancella
@@ -43,10 +44,7 @@ namespace ferrari_23
                     case "6":                                     //modifica nome
                         break;
                     case "7":                                     //visualizza array/animali
-                        for (int i = 0; i < lunghezza; i++)
-                        {
-                            Console.Write($"{array[i]} ");
-                        }
+                        Visualizza(array, lunghezza);
                         break;
                     case "8":                                     //ricerca nome più lungo e più corto, visualizzazione
                         break;
@@ -59,16 +57,10 @@ namespace ferrari_23
                 Console.ReadKey();
             } while (continua == false);
         }
-        static bool Aggiunta(ref int lunghezza, string[] arr, string agg)
+        static void Aggiunta(ref int lunghezza, string[] arr, string agg)
         {
-            bool inserito = false;
-            if (lunghezza < 100)
-            {
                 arr[lunghezza] = agg;
                 lunghezza++;
-                inserito = true;
-            }
-            return inserito;
         }                       //aggiunta
         static void Cancella()
         {
@@ -78,7 +70,13 @@ namespace ferrari_23
         //ricerca
         //visualizza ripetuti
         //modifica nome
-        //visuaizza array
+        static void Visualizza(string[] arr, int lun)                               //visuaizza array
+        {
+            for (int i = 0; i < lun; i++)
+            {
+                Console.Write($"{arr[i]} ");
+            }
+        }
         //ricerca nome più lungo/corto
         //cancella nomi uguali
     }                   
