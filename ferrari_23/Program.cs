@@ -164,7 +164,46 @@ namespace ferrari_23
         }            //ricerca
         static void VisualizzaRipetuti(int lun, string[] arr) 
         {
-
+            int[] occorrenze = new int[lun];
+            string[] uni = new string[lun];
+            for (int i = 0; i < lun; i++)
+            {
+                uni[i] = arr[i];
+            }
+            int x, y;
+            string temp;
+            for (x = 0; x < lun - 1; x++)
+            {
+                for (y = 0; y < lun - 1; y++)
+                {
+                    int comp = string.Compare(uni[y], uni[y + 1]);
+                    if (comp == 1)
+                    {
+                        temp = uni[y];
+                        uni[y] = uni[y + 1];
+                        uni[y + 1] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < lun; i++)
+            {
+                if (uni[i] != "")
+                {
+                    occorrenze[i] = 1;
+                    for (int j = i+1; j < lun; j++)
+                    {
+                        if (uni[i] == uni[j])
+                        {
+                            uni[j] = "";
+                            occorrenze[i]++;
+                        }
+                    }
+                    if (occorrenze[i] > 1)
+                    {
+                        Console.WriteLine($"{uni[i]}: {occorrenze[i]}");
+                    }
+                }
+            }
         }                       //visualizza ripetuti
         static void ModificaNome(string[] arr, string nuovo, int posizione)
         {
