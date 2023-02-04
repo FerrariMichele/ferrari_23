@@ -64,7 +64,7 @@ namespace ferrari_23
                         }
                         break;
                     case "5":                                     //visualizza nomi ripetuti
-                        VisualizzaRipetuti(lunghezza, array);
+                        Console.WriteLine(VisualizzaRipetuti(lunghezza, array));
                         break;
                     case "6":                                     //modifica nome
                         Console.WriteLine("Inserire posizione del nome da modificare: ");
@@ -81,10 +81,10 @@ namespace ferrari_23
                         }
                         break;
                     case "7":                                     //visualizza array/nomi
-                        Visualizza(array, lunghezza);
+                        Console.WriteLine(Visualizza(array, lunghezza));
                         break;
                     case "8":                                     //ricerca nome più lungo e più corto, visualizzazione
-                        LungoCorto(array, lunghezza);
+                        Console.WriteLine(LungoCorto(array, lunghezza));
                         break;
                     case "9":                                     //cancella tutti i nomi uguali
                         if (lunghezza > 0)
@@ -162,10 +162,11 @@ namespace ferrari_23
             }
             return pos;
         }            //ricerca
-        static void VisualizzaRipetuti(int lun, string[] arr) 
+        static string VisualizzaRipetuti(int lun, string[] arr) 
         {
             int[] occorrenze = new int[lun];
             string[] uni = new string[lun];
+            string outp = "";
             for (int i = 0; i < lun; i++)
             {
                 uni[i] = arr[i];
@@ -200,26 +201,29 @@ namespace ferrari_23
                     }
                     if (occorrenze[i] > 1)
                     {
-                        Console.WriteLine($"{uni[i]}: {occorrenze[i]}");
+                        outp += ($"{uni[i]}: {occorrenze[i]}");
                     }
                 }
             }
+            return outp;
         }                       //visualizza ripetuti
         static void ModificaNome(string[] arr, string nuovo, int posizione)
         {
             arr[posizione] = nuovo;
         }          //modifica nome
-        static void Visualizza(string[] arr, int lun)
+        static string Visualizza(string[] arr, int lun)
         {
+            string outp = "";
             for (int i = 0; i < lun; i++)
             {
-                Console.Write($"{arr[i]} ");
+                outp += ($"{arr[i]} ");
             }
-            Console.WriteLine();
-        }                                //visualizza array
-        static void LungoCorto(string[] arr, int lun) 
+            return outp;
+        }                               //visualizza array
+        static string LungoCorto(string[] arr, int lun) 
         {
             string lungo = arr[0], corto = arr[0];
+            string outp = "";
             for (int i = 1; i < lun; i++)
             {
                 
@@ -232,8 +236,8 @@ namespace ferrari_23
                     corto = arr[i];
                 }
             }
-            Console.WriteLine($"il nome più lungo è: {lungo}");
-            Console.WriteLine($"il nome più corto è: {corto}");
+            outp += ($"il nome più lungo è: {lungo}\nil nome più corto è: {corto}");
+            return outp;
         }                               //ricerca nome più lungo/corto
         static void CancellaUguali(ref int lunghezza, string[] arr, string can)
         {
@@ -250,6 +254,6 @@ namespace ferrari_23
                     lunghezza--;
                 }
             }
-        }      //cancella nomi uguali
+        }       //cancella nomi uguali
     }                   
 }
